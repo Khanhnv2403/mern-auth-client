@@ -3,11 +3,15 @@ import Layout from "../../core/Layout";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { authenticate, isAuth } from "./Helpers";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Signin = () => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
-    email: "ngvietkhanh91@gmail.com",
-    password: "abc",
+    email: "khanhkhung0303@gmail.com",
+    password: "abc123",
     buttonText: "Submit",
   });
 
@@ -27,13 +31,18 @@ const Signin = () => {
     })
       .then((res) => {
         console.log("Signin success: ", res);
-        setValues({
-          ...values,
-          email: "",
-          password: "",
-          buttonText: "Submitted",
+        authenticate(res, () => {
+          setValues({
+            ...values,
+            email: "",
+            password: "",
+            buttonText: "Submitted",
+          });
+          toast.success(`Hi ${res.data.user.name}, Welcome back`);
+          isAuth() && isAuth().role === "admin"
+            ? navigate("/admin")
+            : navigate("/private");
         });
-        toast.success(`Hi ${res.data.user.name}, Welcome back`);
       })
       .catch((error) => {
         console.log("Signin error: ", error.response.data);
@@ -41,6 +50,13 @@ const Signin = () => {
         toast.error(error.response.data.error);
       });
   };
+
+  useEffect(() => {
+    const isAuthenticated = isAuth();
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, []);
 
   const signinForm = () => (
     <form action="">
