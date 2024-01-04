@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
-import { isAuth, signout } from "../pages/auth/Helpers";
+import { isAuth, signout } from "../auth/Helpers";
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();

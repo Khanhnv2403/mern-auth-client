@@ -1,11 +1,11 @@
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Signup from "./pages/auth/Signup";
-import Signin from "./pages/auth/Signin";
+import Signup from "./auth/Signup";
+import Signin from "./auth/Signin";
 import Activate from "./pages/auth/Activate";
 import Private from "./pages/Private";
-import PrivateRoute from "./pages/auth/PrivateRoute";
-import AdminRoute from "./pages/auth/AdminRoute";
+import PrivateRoute from "./auth/PrivateRoute";
+import AdminRoute from "./auth/AdminRoute";
 import Admin from "./pages/Admin";
 
 function App() {

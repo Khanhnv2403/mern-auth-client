@@ -66,3 +66,13 @@ export const signout = (next) => {
   removeLocalStorage("user");
   next();
 };
+
+export const updateUser = (res, next) => {
+  console.log("res update user: ", res);
+  if (typeof window !== "undefined") {
+    let auth = JSON.parse(localStorage.getItem("user"));
+    auth = res.data.user;
+    localStorage.setItem("user", JSON.stringify(auth));
+  }
+  next();
+};
