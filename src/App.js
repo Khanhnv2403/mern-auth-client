@@ -1,12 +1,14 @@
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Signup from "./auth/Signup";
-import Signin from "./auth/Signin";
-import Activate from "./pages/auth/Activate";
+import Signup from "./pages/Signup";
+import Signin from "./pages/Signin";
+import Activate from "./pages/Activate";
 import Private from "./pages/Private";
+import Admin from "./pages/Admin";
+import Forgot from "./pages/Forgot";
+import Reset from "./pages/Reset";
 import PrivateRoute from "./auth/PrivateRoute";
 import AdminRoute from "./auth/AdminRoute";
-import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/auth/activate/:token" element={<Activate />} />
+          <Route path="/auth/password/forgot" element={<Forgot />} />
+          <Route path="/auth/password/reset/:token" element={<Reset />} />
           <Route
             path="/private"
             element={

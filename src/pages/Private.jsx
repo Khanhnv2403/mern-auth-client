@@ -32,7 +32,7 @@ const Private = () => {
       },
     })
       .then((res) => {
-        console.log("private profile update: ", res);
+        console.log("private profile load: ", res);
         const { role, name, email } = res.data.usersInfo;
         setValues({ ...values, role, name, email });
       })
